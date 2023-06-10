@@ -1,16 +1,16 @@
 let cardItems = [
   {
     title: "white t-shirt",
-    img: "./white",
+    img: "./White.webp",
     price: 40,
     quantity: 2,
     size: "L",
-    color: "white.webp",
+    color: "White",
     loved: true,
   },
   {
     title: "red t-shirt",
-    img: "./images/red.jpg",
+    img: "./red.jpg",
     price: 45,
     quantity: 3,
     size: "l",
@@ -211,3 +211,49 @@ function deleteItem(v, i) {
   });
 }
 deleteBtn.forEach(deleteItem);
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+/*
+console.log(password);
+function verifPassword(e) {
+  e.preventDefault();
+  const val = e.target.value;
+  if (val.length < 8) {
+    console.log("the password length shouldn't be less than 8");
+  }
+  if (val.length == 1) {
+    console.log("the password field is empty");
+  }
+}
+password.addEventListener("change", verifPassword);
+*/
